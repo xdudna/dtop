@@ -12,8 +12,9 @@ import { formFromEntry, useEntryForm } from '@/composables/useEntryForm';
 import { useTotpStore } from '@/stores/totpStore';
 import { DEFAULT_GROUP } from '@/types/totp';
 import { confirmDialog, toast } from '@/utils/feedback';
+import type { ParsedOtpAuth } from '@/utils/otpauth';
 
-const props = defineProps<{ entryId: string | null }>();
+const props = defineProps<{ entryId: string | null; draft?: ParsedOtpAuth | null }>();
 const emit = defineEmits<{ close: [] }>();
 
 const totp = useTotpStore();
@@ -24,6 +25,17 @@ const { form, errors, validateAll, validateField, applyOtpauth, toPayload, previ
 
 onMounted(async () => {
   await totp.loadEntries();
+
+  if (props.draft) {
+    Object.assign(form, {
+      name: props.draft.name,
+      issuer: props.draft.issuer,
+      secret: props.draft.secret,
+      advanced: { ...props.draft.advanced }
+    });
+    return;
+  }
+
   if (!props.entryId) return;
 
   const found = totp.findById(props.entryId);

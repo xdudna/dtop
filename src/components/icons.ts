@@ -56,7 +56,14 @@ export const ICON_PATHS = {
   ],
   lock: ['M5 11h14v9H5z', 'M8 11V8a4 4 0 0 1 8 0v3'],
   chevronRight: ['M9 5l7 7-7 7'],
-  chevronLeft: ['M15 5l-7 7 7 7']
+  chevronLeft: ['M15 5l-7 7 7 7'],
+  scan: [
+    'M4 9V6a2 2 0 0 1 2-2h3',
+    'M15 4h3a2 2 0 0 1 2 2v3',
+    'M20 15v3a2 2 0 0 1-2 2h-3',
+    'M9 20H6a2 2 0 0 1-2-2v-3',
+    'M4 12h16'
+  ]
 } as const;
 
 export type IconName = keyof typeof ICON_PATHS;

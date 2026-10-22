@@ -24,5 +24,10 @@ onMounted(async () => {
   <MobileLayout v-if="isMobile" />
   <DesktopLayout v-else />
 
-  <EntryEditorPanel v-if="ui.editorOpen" :entry-id="ui.editingId" @close="ui.closeEditor" />
+  <EntryEditorPanel
+    v-if="ui.editorOpen"
+    :entry-id="ui.editingId"
+    :draft="ui.editorDraft"
+    @close="ui.closeEditor"
+  />
 </template>

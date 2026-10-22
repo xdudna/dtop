@@ -4,6 +4,7 @@ import { computed, onMounted, ref } from 'vue';
 import AppIcon from '@/components/AppIcon.vue';
 import EntryTile from '@/components/desktop/EntryTile.vue';
 import EntryCard from '@/components/mobile/EntryCard.vue';
+import QrScanner from '@/components/mobile/QrScanner.vue';
 import TimeBar from '@/components/TimeBar.vue';
 import TotpCode from '@/components/TotpCode.vue';
 import { useDevice } from '@/composables/useDevice';
@@ -14,6 +15,7 @@ import { useUiStore } from '@/stores/uiStore';
 import { DEFAULT_GROUP } from '@/types/totp';
 import type { TotpEntry } from '@/types/totp';
 import { confirmDialog, toast } from '@/utils/feedback';
+import type { ParsedOtpAuth } from '@/utils/otpauth';
 
 const totp = useTotpStore();
 const sync = useSyncStore();
@@ -23,6 +25,7 @@ const { isMobile } = useDevice();
 
 const query = ref('');
 const activeGroup = ref('ALL');
+const scannerOpen = ref(false);
 
 const filtered = computed(() => {
   const keyword = query.value.trim().toLowerCase();
@@ -43,6 +46,21 @@ onMounted(() => {
 });
 
 function openAdd(): void {
+  ui.openCreate();
+}
+
+function openScanner(): void {
+  scannerOpen.value = true;
+}
+
+function handleScanned(parsed: ParsedOtpAuth): void {
+  scannerOpen.value = false;
+  ui.openCreate(parsed);
+  toast('已识别二维码，请确认信息后保存', 'success');
+}
+
+function handleScannerManual(): void {
+  scannerOpen.value = false;
   ui.openCreate();
 }
 
@@ -98,6 +116,17 @@ async function handleDelete(entry: TotpEntry): Promise<void> {
           placeholder="搜索名称、服务商或分组"
           class="mobile-search"
         />
+
+        <button
+          v-if="isMobile"
+          type="button"
+          class="scan-button"
+          aria-label="扫码添加"
+          title="扫码添加"
+          @click="openScanner"
+        >
+          <AppIcon name="scan" :size="20" />
+        </button>
 
         <TimeBar v-if="!isMobile" class="toolbar-time" />
 
@@ -239,6 +268,13 @@ async function handleDelete(entry: TotpEntry): Promise<void> {
     <button v-if="isMobile" type="button" class="fab" aria-label="新增验证码" @click="openAdd">
       <AppIcon name="plus" :size="22" />
     </button>
+
+    <QrScanner
+      v-if="scannerOpen"
+      @close="scannerOpen = false"
+      @detected="handleScanned"
+      @manual="handleScannerManual"
+    />
   </div>
 </template>
 
@@ -302,6 +338,27 @@ async function handleDelete(entry: TotpEntry): Promise<void> {
   min-width: 0;
   padding: 0;
   background: transparent;
+}
+
+.scan-button {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: var(--surface);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition:
+    border-color 0.16s ease,
+    color 0.16s ease;
+}
+
+.scan-button:active {
+  border-color: var(--primary);
+  color: var(--primary-strong);
 }
 
 .mobile-search :deep(.van-search__content) {

@@ -1,0 +1,30 @@
+{
+  "name": "dtop",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "多端 TOTP 验证器 · 本地优先 · 纯静态部署",
+  "scripts": {
+    "dev": "vite",
+    "build": "npm run type-check && vite build",
+    "preview": "vite preview",
+    "type-check": "vue-tsc --noEmit -p tsconfig.json",
+    "test": "node scripts/run-tests.mjs"
+  },
+  "dependencies": {
+    "element-plus": "^2.14.7",
+    "pinia": "^2.3.1",
+    "vant": "^4.10.2",
+    "vue": "^3.5.44",
+    "vue-router": "^4.6.4"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.5",
+    "@vitejs/plugin-vue": "^4.6.2",
+    "esbuild": "^0.21.5",
+    "sass": "^1.106.1",
+    "typescript": "^5.9.3",
+    "vite": "^5.4.21",
+    "vue-tsc": "^3.3.13"
+  }
+}

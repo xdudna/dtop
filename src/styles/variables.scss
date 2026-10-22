@@ -1,0 +1,158 @@
+/* 设计变量：浅色 / 深色主题，同时映射 Element Plus 与 Vant 的 CSS 变量 */
+
+:root {
+  color-scheme: light;
+
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB',
+    'Microsoft YaHei', 'Noto Sans SC', sans-serif;
+  --font-mono: ui-monospace, 'SFMono-Regular', 'Cascadia Code', 'JetBrains Mono', Consolas,
+    'Liberation Mono', monospace;
+
+  --bg: #f3f4f9;
+  --sidebar-bg: #ffffff;
+  --surface: #ffffff;
+  --surface-2: #f5f6fa;
+  --surface-3: #eceef5;
+  --border: #e5e7f0;
+  --border-strong: #d3d7e3;
+  --text: #171b24;
+  --text-secondary: #3f4655;
+  --text-muted: #788294;
+
+  --primary: #5b5bf0;
+  --primary-strong: #4338ca;
+  --primary-soft: #9a9af8;
+  --primary-ghost: rgba(91, 91, 240, 0.1);
+  --primary-shadow: rgba(91, 91, 240, 0.28);
+
+  --success: #15803d;
+  --success-ghost: rgba(21, 128, 61, 0.1);
+  --warning: #b45309;
+  --warning-ghost: rgba(180, 83, 9, 0.12);
+  --danger: #dc2626;
+  --danger-ghost: rgba(220, 38, 38, 0.09);
+
+  --progress-track: #e8eaf3;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --shadow-sm: 0 1px 2px rgba(18, 25, 38, 0.05);
+  --shadow-md: 0 14px 34px -16px rgba(18, 25, 38, 0.22);
+  --page-max: 1120px;
+
+  /* Element Plus 映射 */
+  --el-font-family: var(--font-sans);
+  --el-color-primary: var(--primary);
+  --el-color-primary-light-3: color-mix(in srgb, var(--primary) 70%, #ffffff);
+  --el-color-primary-light-5: color-mix(in srgb, var(--primary) 50%, #ffffff);
+  --el-color-primary-light-7: color-mix(in srgb, var(--primary) 30%, #ffffff);
+  --el-color-primary-light-8: color-mix(in srgb, var(--primary) 20%, #ffffff);
+  --el-color-primary-light-9: color-mix(in srgb, var(--primary) 10%, #ffffff);
+  --el-color-primary-dark-2: var(--primary-strong);
+  --el-bg-color: var(--surface);
+  --el-bg-color-page: var(--bg);
+  --el-bg-color-overlay: var(--surface);
+  --el-text-color-primary: var(--text);
+  --el-text-color-regular: var(--text-secondary);
+  --el-text-color-secondary: var(--text-muted);
+  --el-text-color-placeholder: var(--text-muted);
+  --el-border-color: var(--border);
+  --el-border-color-light: var(--border);
+  --el-border-color-lighter: var(--border);
+  --el-border-color-extra-light: var(--border);
+  --el-fill-color-blank: var(--surface);
+  --el-fill-color-light: var(--surface-2);
+  --el-fill-color-lighter: var(--surface-2);
+  --el-fill-color: var(--surface-2);
+  --el-fill-color-dark: var(--surface-3);
+  --el-mask-color: rgba(15, 19, 27, 0.6);
+  --el-border-radius-base: 10px;
+  --el-border-radius-small: 8px;
+
+  /* Vant 映射 */
+  --van-primary-color: var(--primary);
+  --van-text-color: var(--text);
+  --van-text-color-2: var(--text-secondary);
+  --van-text-color-3: var(--text-muted);
+  --van-background: var(--bg);
+  --van-background-2: var(--surface);
+  --van-background-3: var(--surface-2);
+  --van-border-color: var(--border);
+  --van-cell-background: var(--surface);
+  --van-cell-group-background: var(--surface);
+  --van-cell-text-color: var(--text);
+  --van-cell-value-color: var(--text-muted);
+  --van-field-label-color: var(--text-secondary);
+  --van-field-input-text-color: var(--text);
+  --van-search-background: transparent;
+  --van-search-content-background: var(--surface-2);
+  --van-tabbar-background: var(--surface);
+  --van-tabbar-item-text-color: var(--text-muted);
+  --van-tabbar-item-active-color: var(--primary);
+  --van-dialog-background: var(--surface);
+  --van-popup-background: var(--surface);
+  --van-stepper-background: var(--surface-2);
+  --van-stepper-input-text-color: var(--text);
+  --van-switch-on-background: var(--primary);
+}
+
+html[data-theme='dark'] {
+  color-scheme: dark;
+
+  --bg: #0b0e14;
+  --sidebar-bg: #0f131b;
+  --surface: #141922;
+  --surface-2: #1a202b;
+  --surface-3: #232b3a;
+  --border: #242c3a;
+  --border-strong: #323c4e;
+  --text: #e9edf5;
+  --text-secondary: #b8c2d3;
+  --text-muted: #8793a8;
+
+  --primary: #7f7ff7;
+  --primary-strong: #b4b4ff;
+  --primary-soft: #6a6af0;
+  --primary-ghost: rgba(127, 127, 247, 0.14);
+  --primary-shadow: rgba(0, 0, 0, 0.55);
+
+  --success: #4ade80;
+  --success-ghost: rgba(74, 222, 128, 0.12);
+  --warning: #fbbf24;
+  --warning-ghost: rgba(251, 191, 36, 0.13);
+  --danger: #f87171;
+  --danger-ghost: rgba(248, 113, 113, 0.12);
+
+  --progress-track: #242d3c;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 18px 38px -18px rgba(0, 0, 0, 0.75);
+
+  --el-color-primary-light-3: color-mix(in srgb, var(--primary) 70%, #000000);
+  --el-color-primary-light-5: color-mix(in srgb, var(--primary) 50%, #000000);
+  --el-color-primary-light-7: color-mix(in srgb, var(--primary) 30%, #000000);
+  --el-color-primary-light-8: color-mix(in srgb, var(--primary) 20%, #000000);
+  --el-color-primary-light-9: color-mix(in srgb, var(--primary) 12%, #000000);
+  --el-bg-color: var(--surface);
+  --el-bg-color-page: var(--bg);
+  --el-bg-color-overlay: var(--surface);
+  --el-text-color-primary: var(--text);
+  --el-text-color-regular: var(--text-secondary);
+  --el-text-color-secondary: var(--text-muted);
+  --el-text-color-placeholder: var(--text-muted);
+  --el-border-color: var(--border-strong);
+  --el-border-color-light: var(--border);
+  --el-border-color-lighter: var(--border);
+  --el-border-color-extra-light: var(--border);
+  --el-fill-color-blank: var(--surface);
+  --el-fill-color-light: var(--surface-2);
+  --el-fill-color-lighter: var(--surface-2);
+  --el-fill-color: var(--surface-2);
+  --el-fill-color-dark: var(--surface-3);
+  --el-mask-color: rgba(2, 6, 12, 0.7);
+
+  --van-cell-background: var(--surface);
+  --van-cell-group-background: var(--surface);
+  --van-tabbar-background: var(--surface);
+  --van-dialog-background: var(--surface);
+  --van-popup-background: var(--surface);
+}

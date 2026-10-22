@@ -2,8 +2,6 @@
 
 纯静态、本地优先的双因素（TOTP / Steam Guard）验证器。同一个代码库自动适配移动端与桌面端，数据保存在浏览器本地，并可通过 GitHub Gist / GitLab Snippet 端到端加密同步。
 
-> 需求与设计依据：[DEVELOPMENT.md](./DEVELOPMENT.md)
-
 ## 功能
 
 - **TOTP**：SHA1 / SHA256 / SHA512，30 秒（可配置 10–300 秒），6 / 8 位验证码
